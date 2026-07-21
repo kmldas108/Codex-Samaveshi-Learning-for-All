@@ -358,7 +358,23 @@ async function startServer() {
             topic: { type: Type.STRING },
             transcript: { type: Type.STRING },
             summary: { type: Type.STRING },
-            emotionalTone: { type: Type.STRING },
+            emotionalTone: { type: Type.STRING },        if (process.env.NODE_ENV === "production") {
+          return res.status(503).json({
+            error: "Image analysis is temporarily unavailable because OPENAI_API_KEY is not configured on the server.",
+            code: "OPENAI_API_KEY_MISSING",
+          });
+        }
+
+        // Return Mock fallback matching BDD feature specs      console.error("Live OpenAI analysis failed:", error.message || error);
+
+      if (process.env.NODE_ENV === "production") {
+        return res.status(502).json({
+          error: "We could not analyze this content right now. Please try again.",
+          code: "OPENAI_ANALYSIS_FAILED",
+        });
+      }
+
+      console.warn("Using local development mock fallback.");
             keyTerms: { type: Type.ARRAY, items: { type: Type.STRING } },
             followUpSuggestions: { type: Type.ARRAY, items: { type: Type.STRING } },
           },
