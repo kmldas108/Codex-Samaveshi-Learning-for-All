@@ -1,4 +1,4 @@
-min-h-screen bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-yellow-100 via-purple-100 to-cyan-100 flex flex-col items-center justify-start sm:justify-center p-2 pb-24 sm:p-6 animate-fadeIn font-sans selection:bg-pink-200bg-white/70 backdrop-blur-xl w-full max-w-lg rounded-[1.75rem] sm:rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] p-4 sm:p-6 md:p-10 border border-white/60 relative overflow-visible sm:overflow-hiddentext-center mb-4 sm:mb-8 relative z-10text-4xl sm:text-6xl mb-1 sm:mb-4 animate-bounce inline-blocktext-3xl sm:text-4xl font-black text-slate-800 mb-1 sm:mb-2 tracking-tight drop-shadow-smtext-slate-600 text-base sm:text-lg font-mediumspace-y-4 sm:space-y-6 relative z-10p-3 sm:p-4 rounded-2xl flex items-center gap-3 sm:gap-4 transition-all transform duration-200text-2xl sm:text-3xl bg-white/20 rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center backdrop-blur-smfont-bold text-base sm:text-lg ${isSelected ? 'text-white' : 'text-slate-700'}sticky bottom-3 sm:static w-full bg-black hover:bg-slate-800 text-white font-bold py-4 sm:py-5 rounded-3xl text-lg sm:text-xl transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-slate-300 mt-4 sm:mt-6 flex items-center justify-center gap-2 groupimport React, { useState } from 'react';
+import React, { useState } from 'react';
 import { UserPreferences, UserDisability } from '../types';
 import { DISABILITY_OPTIONS, SUPPORTED_LANGUAGES, GRADE_OPTIONS } from '../constants';
 
@@ -18,22 +18,22 @@ const OnboardingView: React.FC<OnboardingViewProps> = ({ prefs, onComplete }) =>
   };
 
   return (
-    <div className="min-h-screen bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-yellow-100 via-purple-100 to-cyan-100 flex flex-col items-center justify-center p-4 md:p-6 animate-fadeIn font-sans selection:bg-pink-200">
+    <div className="min-h-screen bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-yellow-100 via-purple-100 to-cyan-100 flex flex-col items-center justify-start sm:justify-center p-2 pb-24 sm:p-6 animate-fadeIn font-sans selection:bg-pink-200">
       
       {/* Playful Container */}
-      <div className="bg-white/70 backdrop-blur-xl w-full max-w-lg rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] p-6 md:p-10 border border-white/60 relative overflow-hidden">
+      <div className="bg-white/70 backdrop-blur-xl w-full max-w-lg rounded-[1.75rem] sm:rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] p-4 sm:p-6 md:p-10 border border-white/60 relative overflow-visible sm:overflow-hidden">
         
         {/* Decorative Background Blobs */}
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-200/50 rounded-full blur-3xl pointer-events-none mix-blend-multiply"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-yellow-200/50 rounded-full blur-3xl pointer-events-none mix-blend-multiply"></div>
 
-        <div className="text-center mb-8 relative z-10">
-            <div className="text-6xl mb-4 animate-bounce inline-block">🎓</div>
-            <h1 className="text-4xl font-black text-slate-800 mb-2 tracking-tight drop-shadow-sm">Samaveshi</h1>
-            <p className="text-slate-600 text-lg font-medium">Your Magical Learning Bridge! 🌈</p>
+        <div className="text-center mb-4 sm:mb-8 relative z-10">
+            <div className="text-4xl sm:text-6xl mb-1 sm:mb-4 animate-bounce inline-block">🎓</div>
+            <h1 className="text-3xl sm:text-4xl font-black text-slate-800 mb-1 sm:mb-2 tracking-tight drop-shadow-sm">Samaveshi</h1>
+            <p className="text-slate-600 text-base sm:text-lg font-medium">Your Magical Learning Bridge! 🌈</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 relative z-10">
             
             {/* Name Input - Big & Friendly */}
             <div className="group transition-all">
@@ -91,16 +91,16 @@ const OnboardingView: React.FC<OnboardingViewProps> = ({ prefs, onComplete }) =>
                                 type="button"
                                 key={opt.id}
                                 onClick={() => setLocalPrefs({...localPrefs, disability: opt.id as UserDisability})}
-                                className={`p-4 rounded-2xl flex items-center gap-4 transition-all transform duration-200 ${
+                                className={`p-3 sm:p-4 rounded-2xl flex items-center gap-3 sm:gap-4 transition-all transform duration-200 ${
                                     isSelected 
                                     ? 'bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-purple-200 scale-[1.02]' 
                                     : 'bg-white hover:bg-slate-50 text-slate-700 shadow-sm hover:shadow-md'
                                 }`}
                             >
-                                <span className="text-3xl bg-white/20 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm">
+                                <span className="text-2xl sm:text-3xl bg-white/20 rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center backdrop-blur-sm">
                                     {opt.icon}
                                 </span>
-                                <span className={`font-bold text-lg ${isSelected ? 'text-white' : 'text-slate-700'}`}>
+                                <span className={`font-bold text-base sm:text-lg ${isSelected ? 'text-white' : 'text-slate-700'}`}>
                                     {opt.label}
                                 </span>
                                 {isSelected && <span className="ml-auto text-white text-xl">✓</span>}
@@ -112,7 +112,7 @@ const OnboardingView: React.FC<OnboardingViewProps> = ({ prefs, onComplete }) =>
 
             <button 
                 type="submit" 
-                className="w-full bg-black hover:bg-slate-800 text-white font-bold py-5 rounded-3xl text-xl transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-slate-200 mt-6 flex items-center justify-center gap-2 group"
+                className="sticky bottom-3 sm:static w-full bg-black hover:bg-slate-800 text-white font-bold py-4 sm:py-5 rounded-3xl text-lg sm:text-xl transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-slate-300 mt-4 sm:mt-6 flex items-center justify-center gap-2 group"
             >
                 <span>Let's Start!</span>
                 <span className="group-hover:translate-x-1 transition-transform">🚀</span>
